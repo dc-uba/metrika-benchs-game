@@ -29,10 +29,8 @@ class GamePlanner:
         self.generate_custom_input_files(series)
 
         fixture = []
-        languages = ['python3']
 
-        for language in languages:
-            implementation = self.implementations[language]
+        for (language,implementation) in self.implementations.iteritems():
             benchmarks = self.generate_fixture_of(language, implementation, series)
             fixture.extend(benchmarks)
 
