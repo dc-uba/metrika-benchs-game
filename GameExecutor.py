@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from subprocess import call  # to launch benchs with their language implementations
+from subprocess import STDOUT
 import os
 import sys
 
@@ -27,20 +28,27 @@ class GameExecutor(metrika_executor.MetrikaExecutor):
     def name(self):
         return self.bench_name
 
-    def run_using(self, timer):
+    def run_using(self, timer, run_number):
 
-        output = open(os.devnull, 'w')
         if input_from_stdin(self.bench_name):
             input_file = open(self.input_file_name())
         else:
             input_file = None
 
+        if run_number == 0:
+            err_cut = " 2>&1"
+        else:
+            err_cut = " 2>/dev/null"
+
+        output = open(os.devnull, 'w')
+
         # print (self.execute_command())
+        command = self.execute_command() + err_cut + " >/dev/null | head -n 25"
         timer.start()
         try:
-            call(self.execute_command(), stdin=input_file, stdout=output, shell=True)
+            call(command, stdin=input_file, shell=True)
         except Exception as e:
-            print("error executing %s: %s" % self, e)
+            print("error executing %s: %s" % (self, e))
 
         timer.stop()
 
