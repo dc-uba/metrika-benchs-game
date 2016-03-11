@@ -2,6 +2,8 @@
 
 import sys
 
+sys.path.append("../metrika_runner")
+
 import metrika_runner
 import metrika_reporter
 import metrika_timer
