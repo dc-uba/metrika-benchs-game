@@ -25,7 +25,7 @@ class GameExecutor(metrika_executor.MetrikaExecutor):
         return "%s on %s impl (%s)" % (self.bench_name, self.language, self.variation)
 
     def name(self):
-        return self.variation
+        return self.bench_name
 
     def run_using(self, timer):
 
