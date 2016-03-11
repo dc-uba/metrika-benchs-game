@@ -1,5 +1,5 @@
 /*
- * $Id: simple_hash.h,v 1.1 2013/01/02 04:29:25 igouy-guest Exp $
+ * $Id: simple_hash.h,v 1.1 2013-01-02 04:29:25 igouy-guest Exp $
  *
  * simple hashtable map: Cstring -> Int
  */

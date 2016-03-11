@@ -1,5 +1,5 @@
 /*
- * $Id: simple_hash3.h,v 1.1 2013/01/02 04:29:26 igouy-guest Exp $
+ * $Id: simple_hash3.h,v 1.1 2013-01-02 04:29:26 igouy-guest Exp $
  * simple hashtable map: Cstring -> Int
  *
  * 28-Dec-2009 changed by The Anh Tran: hashtable ui64 -> uint

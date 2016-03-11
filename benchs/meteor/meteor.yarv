@@ -2,9 +2,6 @@
 # http://benchmarksgame.alioth.debian.org
 #   contributed by Kevin Barnes (Ruby novice)
 
-$VERBOSE = nil
-
-
 def blank_board
   0b111111100000100000100000100000100000100000100000100000100000100000
 end

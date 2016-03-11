@@ -7,8 +7,6 @@
 #   2) see how I represent a board as a bitmask by reading the blank_board comments
 #   3) read as your mental paths take you
 
-$VERBOSE = nil
-
 # class to represent all information about a particular rotation of a particular piece
 class Rotation
   # an array (by location) containing a bit mask for how the piece maps at the given location.
