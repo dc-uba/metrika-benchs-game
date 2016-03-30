@@ -10,9 +10,9 @@ __author__ = 'Javier Pimás'
 
 
 class GamePlanner:
-    def __init__(self, runs, implementations):
+    def __init__(self, runs, contenders):
         self.runs = runs
-        self.implementations = implementations
+        self.contenders = contenders
 
         self.root_dir   = "."
         self.benchs_dir = self.root_dir + "/benchs"
@@ -30,36 +30,37 @@ class GamePlanner:
 
         fixture = []
 
-        for (language,implementation) in self.implementations.iteritems():
-            benchmarks = self.generate_fixture_of(language, implementation, series)
+        for (language, contender) in self.contenders.items():
+            benchmarks = self.generate_fixture_of(language, contender, series)
             fixture.extend(benchmarks)
 
         return fixture
 
-    def generate_fixture_of(self, language, implementation, series):
+    def generate_fixture_of(self, language, contender, series):
         benchmarks = []
-        for bench_name, options in sorted(self.runs.iteritems()):
-            for variation in self.variations_of(bench_name, implementation):
+        for bench_name, options in sorted(self.runs.items()):
+            for variation in self.variations_of(bench_name, contender):
                 for bench_input in options[series]:
-                    new = GameExecutor(bench_name, language, implementation["command"], variation, bench_input)
+                    new = GameExecutor(bench_name, language, contender, variation, bench_input)
                     benchmarks.append(new)
 
         return benchmarks
 
-    def variations_of(self, bench_name, implementation):
+    def variations_of(self, bench_name, contender):
         return [os.path.basename(path) for path in
-                glob.glob(self.benchs_dir + "/" + bench_name + "/*." + implementation['extension'])]
+                glob.glob(self.benchs_dir + "/" + bench_name + "/*." + contender['extension'])]
 
     # the input of regexdna and knucleotide is the output of fasta.
     # we have to run fasta once for each input value
     def generate_custom_input_files(self, series):
-        for value in self.runs["regexdna"][series]:
-            out_file = open('%s/regexdna_input_%d.txt' % (self.temp_dir, value), 'w')
-            call('python3 %s/fasta/fasta.python3 %d' % (self.benchs_dir, value), stdout=out_file, shell=True)
+        #for value in self.runs["regexdna"][series]:
+        #    out_file = open('%s/regexdna_input_%d.txt' % (self.temp_dir, value), 'w')
+        #    call('python3 %s/fasta/fasta.python3 %d' % (self.benchs_dir, value), stdout=out_file, shell=True)
 
-        for value in self.runs["knucleotide"][series]:
-            out_file = open('%s/knucleotide_input_%d.txt' % (self.temp_dir, value), 'w')
-            call('python3 %s/fasta/fasta.python3 %d' % (self.benchs_dir, value), stdout=out_file, shell=True)
+        #for value in self.runs["knucleotide"][series]:
+        #    out_file = open('%s/knucleotide_input_%d.txt' % (self.temp_dir, value), 'w')
+        #    call('python3 %s/fasta/fasta.python3 %d' % (self.benchs_dir, value), stdout=out_file, shell=True)
+        pass
 
 def assure_dir(directory):
     if not os.path.exists(directory):
