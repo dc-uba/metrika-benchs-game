@@ -3,8 +3,8 @@
 
 import sys
 
-sys.path.append("../metrika_runner")
-from metrika_engine import MetrikaEngine
+sys.path.append("../metrika")
+from metrika.engine import MetrikaEngine
 from GameOutliner import GameOutliner
 
 __author__ = 'Javier Pimás'

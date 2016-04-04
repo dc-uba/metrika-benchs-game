@@ -5,8 +5,8 @@ import os.path
 import yaml
 import numpy as np
 from GameExecutor import GameExecutor
-from benchmark import Benchmark
-from contender import Contender
+from metrika.benchmark import Benchmark
+from metrika.contender import Contender
 
 __author__ = 'Javier Pimás'
 
@@ -29,7 +29,6 @@ class GameOutliner:
 
         Benchmark.__repr__ = lambda this: '%s (%s, %s)' % \
                                   (this.name, str(this.settings['input']), this.settings['variation'])
-
 
     def benchmark_names(self):
         return os.walk(self.benchs_dir).next()[1]
@@ -93,7 +92,7 @@ class GameOutliner:
         pass
 
     def plot(self, results, testbed):
-        import metrika_plotter
+        from metrika.plotter import plot
         benchs = [executor.bench.name for executor in results.keys()]
         names = sorted(list(set(benchs)))
         repeated_contenders = [executor.contender.name for executor in results.keys()]
@@ -110,7 +109,7 @@ class GameOutliner:
             if average > current_average:
                 samples_by_measure[idx_measure][idx_language] = values
 
-        metrika_plotter.plot(names, contenders, samples_by_measure, testbed, box=False, normalize=True,
+        plot(names, contenders, samples_by_measure, testbed, box=False, normalize=True,
                              label='execution time', title='Benchmarks game')
 
 

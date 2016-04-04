@@ -2,13 +2,13 @@
 
 import os
 from subprocess import call  # to launch benchs
-import metrika_executor
-from metrika_timer import MetrikaTimer
+from metrika.executor import MetrikaExecutor
+from metrika.timer import MetrikaTimer
 
 __author__ = 'Javier Pimás'
 
 
-class GameExecutor(metrika_executor.MetrikaExecutor):
+class GameExecutor(MetrikaExecutor):
     def __init__(self, bench, contender):
         super(GameExecutor, self).__init__(bench, contender)
 
