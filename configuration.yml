@@ -1,10 +1,12 @@
 
 implementations:
-    ruby:    {command: ruby,    extension: yarv,    needs_build: False}
-    python3: {command: python3, extension: python3, needs_build: False}
+    ruby:    {command: ruby -W0,    extension: yarv}
+    python3: {command: python3, extension: python3}
+    beest:   {command: 'wine bee/bee.bsl -l Benchmarks-Game.bsl -m "StandaloneRunner>>#run:" ', extension: vw,
+              exec_path: '/proyectos/bee/latest'}
 
 
-configurations:
+benchs:
     binarytrees:       {test: 1,  short: 9, medium: 13}
 ##    chameleons:        {test: 10, short: 10000}
 ##    chameneosredux:    {test: 6,  short: 6000, medium: 60000} # needs shared queue
@@ -15,8 +17,8 @@ configurations:
     meteor:            {test: 2,  short: 2098, medium: 4096}
     nbody:             {test: 10, short: 10000, medium: 50000}
     pidigits:          {test: 1,  short: 27, medium: 1000}
-##    regexdna:          {test: 10, short: 10000, medium: 10000},
-##    revcomp:           {test: 1,  short: 1000, medium: 1000},
+    regexdna:          {test: 10, short: 10000, medium: 10000}
+    revcomp:           {test: 1,  short: 1000, medium: 1000}
     spectralnorm:      {test: 1,  short: 100, medium: 100}
     threadring:        {test: 1,  short: 1000, medium: 1000}
 
