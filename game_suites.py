@@ -12,7 +12,7 @@ def assure_dir(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-root_dir = "."
+root_dir = os.getcwd()
 benchs_dir = root_dir + "/benchs"
 temp_dir = root_dir + "/tmp"
 assure_dir(temp_dir)
