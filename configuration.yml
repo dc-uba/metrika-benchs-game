@@ -1,23 +1,22 @@
 
 implementations:
-    ruby:    {command: ruby -W0,    extension: yarv}
+#    ruby:    {command: ruby -W0,    extension: yarv}
     python3: {command: python3, extension: python3}
-    beest:   {command: 'wine bee/bee.bsl -l Benchmarks-Game.bsl -m "StandaloneRunner>>#run:" ', extension: vw,
-              exec_path: '/proyectos/bee/latest'}
+    beest:   {command: 'wine bee/bee.bsl -q -l Benchmarks-Game.bsl -m "BenchmarkGameRunner>>#run:" ', extension: vw,
+              execute_path: '/proyectos/bee/latest'}
 
 
 benchs:
     binarytrees:       {test: 1,  short: 9, medium: 13}
-##    chameleons:        {test: 10, short: 10000}
-##    chameneosredux:    {test: 6,  short: 6000, medium: 60000} # needs shared queue
-    fannkuchredux:     {test: 1,  short: 4, medium: 9}
+#####    chameneosredux:    {test: 6,  short: 6000, medium: 60000} # needs shared queue
+    fannkuchredux:     {test: 2,  short: 4, medium: 9}
     fasta:             {test: 1,  short: 1000, medium: 40000}
-    knucleotide:       {test: 1,  short: 1000, medium: 80000}
+    knucleotide:       {test: 10,  short: 1000, medium: 80000}
     mandelbrot:        {test: 1,  short: 200, medium: 200}
     meteor:            {test: 2,  short: 2098, medium: 4096}
     nbody:             {test: 10, short: 10000, medium: 50000}
-    pidigits:          {test: 1,  short: 27, medium: 1000}
-    regexdna:          {test: 10, short: 10000, medium: 10000}
+#####    pidigits:          {test: 1,  short: 27, medium: 1000} # too slow on bee
+#####    regexdna:          {test: 10, short: 10000, medium: 10000} # doesn't work in bee yet
     revcomp:           {test: 1,  short: 1000, medium: 1000}
     spectralnorm:      {test: 1,  short: 100, medium: 100}
     threadring:        {test: 1,  short: 1000, medium: 1000}
